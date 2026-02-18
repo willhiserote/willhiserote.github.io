@@ -1,15 +1,21 @@
 const products = [
-    { name: 'Wood Shelves', stock: 150 },
-    { name: 'Metal Shelves', stock: 100 },
-    { name: 'Hanging Rods', stock: 200 },
-    { name: 'Brackets', stock: 300 },
-    { name: 'Screw Packs', stock: 500 }
+    { name: 'Shelf', stock: 200 },
+    { name: 'Rod', stock: 150 },
+    { name: 'Wire', stock: 300 },
+    { name: 'Superslide', stock: 100 }
 ];
 
 const orderHistory = [
-    // Sample: 3 builders' orders (add more from your list)
-    { builder: 'ABC Construction', date: '2025-01-15', items: { 'Wood Shelves': 20, 'Hanging Rods': 10 } },
-    { builder: 'XYZ Builders', date: '2025-02-10', items: { 'Metal Shelves': 15, 'Brackets': 30, 'Screw Packs': 50 } },
-    { builder: 'DEF Homes', date: '2025-03-05', items: { 'Wood Shelves': 25, 'Hanging Rods': 20, 'Brackets': 40 } },
-    // Add more historical orders here for better trends
+    { builder: 'Panther Builders', date: '2025-01-01', items: { 'Shelf': 60, 'Rod': 30 } },
+    { builder: 'Dumont Construction', date: '2025-01-01', items: { 'Wire': 45, 'Shelf': 20, 'Rod': 20 } },
+    { builder: 'Wood Homes', date: '2025-01-01', items: { 'Wire': 120 } },
+    { builder: 'Todd Wood Homes', date: '2025-03-01', items: { 'Wire': 100, 'Shelf': 35, 'Rod': 35 } },
+    { builder: 'Dumont Construction', date: '2025-03-01', items: { 'Wire': 50 } },
+    { builder: 'Panther Builders', date: '2025-03-01', items: { 'Shelf': 150 } },
+    { builder: 'Dumont Construction', date: '2025-07-01', items: { 'Shelf': 40, 'Rod': 40, 'Wire': 30 } },
+    { builder: 'Todd Wood Homes', date: '2025-07-01', items: { 'Superslide': 20 } },
+    { builder: 'Panther Builders', date: '2025-07-01', items: { 'Wire': 30, 'Superslide': 30, 'Shelf': 50, 'Rod': 50 } },
+    { builder: 'Panther Builders', date: '2025-08-01', items: { 'Superslide': 50, 'Wire': 60 } },
+    { builder: 'Todd Wood Homes', date: '2025-08-01', items: { 'Shelf': 50, 'Rod': 50 } },
+    { builder: 'Dumont Construction', date: '2025-08-01', items: { 'Wire': 100, 'Shelf': 70, 'Rod': 70 } }
 ];
