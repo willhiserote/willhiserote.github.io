@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpaceOptions - Closet Shelving in Cedar Rapids, IA</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>SpaceOptions - Custom Closet Shelving in Cedar Rapids, IA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="index.html">SpaceOptions</a>
+            <a class="navbar-brand fw-bold fs-4" href="index.html">SpaceOptions</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="orders.html">Submit Order</a></li>
                     <li class="nav-item"><a class="nav-link" href="inventory.html">Inventory</a></li>
                     <li class="nav-item"><a class="nav-link" href="suggestions.html">Re-Order Suggestions</a></li>
@@ -24,12 +28,61 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <h1>Welcome to SpaceOptions</h1>
-        <p>Owned by Kelly Hiserote, we're your go-to closet shelving experts in Cedar Rapids, Iowa. We help builders like you get the materials you need without extra trips—submit orders here, check inventory, and get smart re-order tips based on trends.</p>
-        <p>Contact: info@spaceoptions.com | (123) 456-7890</p>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center text-center text-white">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-3">Custom Closet Shelving Solutions</h1>
+            <p class="lead mb-4">Serving Cedar Rapids builders with fast, reliable materials—no extra trips needed.</p>
+            <a href="orders.html" class="btn btn-primary btn-lg px-5 py-3">Submit Your Order Today</a>
+        </div>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- About / Benefits Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow border-0">
+                        <div class="card-body">
+                            <h4 class="card-title">Streamlined Ordering</h4>
+                            <p class="card-text">Builders submit complete orders online—avoid multiple trips and recuts.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow border-0">
+                        <div class="card-body">
+                            <h4 class="card-title">Real-Time Inventory</h4>
+                            <p class="card-text">Check current stock before ordering to plan jobs efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow border-0">
+                        <div class="card-body">
+                            <h4 class="card-title">Smart Re-Order Suggestions</h4>
+                            <p class="card-text">Get alerts on what to restock based on trends and your order history.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer Teaser -->
+    <section class="py-5 text-center">
+        <div class="container">
+            <h2 class="mb-4">Owned & Operated by Kelly Hiserote</h2>
+            <p class="lead mb-3">Cedar Rapids, Iowa's trusted closet shelving partner for builders.</p>
+            <p class="fs-4 fw-bold">Call us: <a href="tel:3195338300" class="text-primary">319-533-8300</a></p>
+            <p>Email: <a href="mailto:info@spaceoptions.com">info@spaceoptions.com</a></p>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2026 SpaceOptions. All rights reserved. Cedar Rapids, IA.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
