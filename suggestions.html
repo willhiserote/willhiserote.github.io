@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Re-Order Suggestions - SpaceOptions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar same as index.html -->
+
+    <div class="container mt-5">
+        <h1>Re-Order Suggestions</h1>
+        <p>Based on order history trends (supply/demand). Suggests re-order if stock is low relative to average monthly usage.</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Avg Monthly Usage</th>
+                    <th>Current Stock</th>
+                    <th>Suggestion</th>
+                </tr>
+            </thead>
+            <tbody id="suggestionsTable"></tbody>
+        </table>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        const tableBody = document.getElementById('suggestionsTable');
+        const threshold = 2; // Re-order if stock < threshold * avg usage
+
+        products.forEach(product => {
+            // Calculate total usage from history
+            let totalUsage = 0;
+            orderHistory.forEach(order => {
+                totalUsage += order.items[product.name] || 0;
+            });
+
+            // Assume 12 months of data for average (adjust based on your real history span)
+            const months = 12; // Placeholder; update with real timeframe
+            const avgUsage = Math.round(totalUsage / months);
+
+            const suggestion = product.stock < (threshold * avgUsage) ? `Re-order ${threshold * avgUsage - product.stock} units` : 'Stock sufficient';
+
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${product.name}</td><td>${avgUsage}</td><td>${product.stock}</td><td>${suggestion}</td>`;
+            tableBody.appendChild(row);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
