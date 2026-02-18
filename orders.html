@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Order - SpaceOptions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar same as index.html (copy-paste it here) -->
+
+    <div class="container mt-5">
+        <h1>Submit Your Order</h1>
+        <p>Fill in details to avoid extra trips— we'll confirm via email.</p>
+        <form action="https://formspree.io/f/yourkey" method="POST">
+            <div class="mb-3">
+                <label for="builder" class="form-label">Builder Name</label>
+                <select id="builder" name="builder" class="form-select" required>
+                    <option value="">Select...</option>
+                    <option>ABC Construction</option>
+                    <option>XYZ Builders</option>
+                    <option>DEF Homes</option>
+                    <!-- Add more builders from your list -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="wood_shelves" class="form-label">Wood Shelves (qty)</label>
+                <input type="number" id="wood_shelves" name="wood_shelves" class="form-control" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="metal_shelves" class="form-label">Metal Shelves (qty)</label>
+                <input type="number" id="metal_shelves" name="metal_shelves" class="form-control" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="hanging_rods" class="form-label">Hanging Rods (qty)</label>
+                <input type="number" id="hanging_rods" name="hanging_rods" class="form-control" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="brackets" class="form-label">Brackets (qty)</label>
+                <input type="number" id="brackets" name="brackets" class="form-control" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="screw_packs" class="form-label">Screw Packs (qty)</label>
+                <input type="number" id="screw_packs" name="screw_packs" class="form-control" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="notes" class="form-label">Additional Notes</label>
+                <textarea id="notes" name="notes" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Order</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
