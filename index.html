@@ -1,136 +1,207 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpaceOptions - Custom Closet Shelving | Cedar Rapids, IA</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="logo.png" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spaceoptions • Order Log 2025</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, sans-serif; }
+    .month-header { 
+      background: linear-gradient(to right, #1e40af, #3b82f6); 
+      color: white; 
+    }
+    .order-card {
+      border-left: 5px solid #3b82f6;
+      transition: all 0.15s ease;
+    }
+    .order-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold fs-4 d-flex align-items-center" href="#">
-                <img src="logo.png" alt="SpaceOptions Logo" class="logo me-2" width="180" height="50" style="object-fit: contain;">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#home-tab" data-bs-toggle="tab">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#orders-tab" data-bs-toggle="tab">Submit Order</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#inventory-tab" data-bs-toggle="tab">Inventory</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#suggestions-tab" data-bs-toggle="tab">Re-Order Suggestions</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body class="bg-gray-50 min-h-screen">
 
-    <div class="tab-content mt-5 pt-5">
-        <!-- HOME TAB -->
-        <div class="tab-pane fade show active" id="home-tab">
-            <section class="hero d-flex align-items-center text-center text-white">
-                <div class="container">
-                    <h1 class="display-3 fw-bold mb-3">Custom Closet Shelving Solutions</h1>
-                    <p class="lead mb-4">Cedar Rapids builders – get materials fast, no extra trips or recuts.</p>
-                    <a href="#orders-tab" data-bs-toggle="tab" class="btn btn-primary btn-lg px-5 py-3">Submit Order Now</a>
-                </div>
-            </section>
+  <!-- Header -->
+  <header class="month-header py-10 px-6 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight">
+      Spaceoptions Order Log • 2025
+    </h1>
+    <p class="mt-3 text-xl opacity-90">
+      Cedar Rapids, Iowa • Sample orders & delivery trips
+    </p>
+  </header>
 
-            <section class="py-5 bg-light">
-                <div class="container">
-                    <h2 class="text-center mb-5">Why SpaceOptions?</h2>
-                    <div class="row text-center">
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100 shadow border-0">
-                                <div class="card-body">
-                                    <h4>Streamlined Ordering</h4>
-                                    <p>Submit full orders online – avoid multiple trips.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100 shadow border-0">
-                                <div class="card-body">
-                                    <h4>Live Inventory</h4>
-                                    <p>Check stock in real time before ordering.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100 shadow border-0">
-                                <div class="card-body">
-                                    <h4>Smart Re-Orders</h4>
-                                    <p>Get suggestions based on your order history.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  <!-- Main Content -->
+  <main class="max-w-5xl mx-auto px-4 py-12 md:px-8">
 
-            <section class="py-5">
-                <div class="container">
-                    <h2 class="text-center mb-5">Our Products</h2>
-                    <div class="row">
-                        <div class="col-md-3 mb-4">
-                            <img src="https://hdcabinetshop.com/wp-content/uploads/Unorganized/closet-organizer-systems-for-sale-kalona-iowa-1200x700.jpg" alt="Shelf and Rod" class="img-fluid rounded shadow">
-                            <p class="text-center mt-2">Shelf & Rod</p>
-                        </div>
-                        <div class="col-md-3 mb-4">
-                            <img src="https://atechels.com/residential/wp-content/uploads/sites/2/2019/07/Transform-Extra-Bedroom-Closets-Into-Useful-Spaces.jpg" alt="Wire Shelving" class="img-fluid rounded shadow">
-                            <p class="text-center mt-2">Wire</p>
-                        </div>
-                        <div class="col-md-3 mb-4">
-                            <img src="https://transform.octanecdn.com/crop/1920x1080/https://octanecdn.com/artisancustomclosetsnew/artisancustomclosetsnew_458145350.jpg" alt="Superslide" class="img-fluid rounded shadow">
-                            <p class="text-center mt-2">Superslide</p>
-                        </div>
-                        <div class="col-md-3 mb-4">
-                            <img src="https://contentgrid.homedepot-static.com/hdus/en_US/DTCCOMNEW/Articles/walk-in-closet-ideas-section-3-A.jpg" alt="Custom Closet" class="img-fluid rounded shadow">
-                            <p class="text-center mt-2">Custom Systems</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <!-- January 2025 -->
+    <section class="mb-16">
+      <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-600 pb-3">
+        January 2025
+      </h2>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+        <div class="bg-white rounded-xl p-6 shadow-md order-card">
+          <h3 class="text-xl font-semibold text-blue-700 mb-3">Panther Builders</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Material:</strong> Shelf and rod</li>
+            <li><strong>Quantity:</strong> 60 units shelving + 30 units rod</li>
+            <li><strong>Total units:</strong> 90</li>
+            <li><strong>Trips:</strong> 2</li>
+          </ul>
         </div>
 
-        <!-- ORDERS TAB -->
-        <div class="tab-pane fade" id="orders-tab">
-            <div class="container mt-5">
-                <h1 class="mb-4">Submit Your Order</h1>
-                <p class="lead mb-4">Enter quantities for Shelf, Rod, Wire, and Superslide. We'll confirm via email.</p>
-                <form action="https://formspree.io/f/yourkey" method="POST" id="orderForm">
-                    <div class="mb-3">
-                        <label for="builder" class="form-label fw-bold">Builder Name</label>
-                        <select id="builder" name="builder" class="form-select" required>
-                            <option value="">Select Builder...</option>
-                            <option>Panther Builders</option>
-                            <option>Dumont Construction</option>
-                            <option>Wood Homes</option>
-                            <option>Todd Wood Homes</option>
-                        </select>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="shelf" class="form-label">Shelf (units)</label>
-                            <input type="number" id="shelf" name="shelf" class="form-control" min="0">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="rod" class="form-label">Rod (units)</label>
-                            <input type="number" id="rod" name="rod" class="form-control" min="0">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="wire" class="form-label">Wire (units)</label>
-                            <input type="number" id="wire" name="wire" class="form-control" min="0">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="superslide" class="form-label">Superslide (units)</label>
-                            <input type="number" id="superslide" name="superslide" class="
+        <div class="bg-white rounded-xl p-6 shadow-md order-card">
+          <h3 class="text-xl font-semibold text-blue-700 mb-3">Dumont Construction</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Material:</strong> Wire and shelf and rod</li>
+            <li><strong>Quantity:</strong> 45 units wire + 20 units shelf and rod</li>
+            <li><strong>Total units:</strong> 65</li>
+            <li><strong>Trips:</strong> 1</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md order-card">
+          <h3 class="text-xl font-semibold text-blue-700 mb-3">Wood Homes</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Material:</strong> Wire</li>
+            <li><strong>Quantity:</strong> 120 units</li>
+            <li><strong>Total units:</strong> 120</li>
+            <li><strong>Trips:</strong> 3</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- March 2025 -->
+    <section class="mb-16">
+      <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-green-600 pb-3">
+        March 2025
+      </h2>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+        <div class="bg-white rounded-xl p-6 shadow-md order-card">
+          <h3 class="text-xl font-semibold text-green-700 mb-3">Todd Wood Homes</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Material:</strong> Wire and shelf and rod</li>
+            <li><strong>Quantity:</strong> 100 units wire + 35 units shelf and rod</li>
+            <li><strong>Total units:</strong> 135</li>
+            <li><strong>Trips:</strong> 4 (recut)</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md order-card">
+          <h3 class="text-xl font-semibold text-green-700 mb-3">Dumont Construction</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Material:</strong> Wire</li>
+            <li><strong>Quantity:</strong> 50 units</li>
+            <li><strong>Total units:</strong> 50</li>
+            <li><strong>Trips:</strong> 1</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md order-card">
+          <h3 class="text-xl font-semibold text-green-700 mb-3">Panther Builders</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Material:</strong> Shelf only (no rod)</li>
+            <li><strong>Quantity:</strong> 150 units shelf</li>
+            <li><strong>Total units:</strong> 150</li>
+            <li><strong>Trips:</strong> 3</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- July 2025 -->
+    <section class="mb-16">
+      <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-yellow-600 pb-3">
+        July 2025
+      </h2>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+        <div class="bg-white rounded-xl p-6 shadow-md order-card">
+          <h3 class="text-xl font-semibold text-yellow-700 mb-3">Dumont Construction</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Material:</strong> Shelf and rod and wire</li>
+            <li><strong>Quantity:</strong> 40 units shelf and rod + 30 units wire</li>
+            <li><strong>Total units:</strong> 70</li>
+            <li><strong>Trips:</strong> 2</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md order-card">
+          <h3 class="text-xl font-semibold text-yellow-700 mb-3">Todd Wood Homes</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Material:</strong> Superslide</li>
+            <li><strong>Quantity:</strong> 20 units</li>
+            <li><strong>Total units:</strong> 20</li>
+            <li><strong>Trips:</strong> 1</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md order-card">
+          <h3 class="text-xl font-semibold text-yellow-700 mb-3">Panther Builders</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Material:</strong> Wire, superslide and shelf and rod</li>
+            <li><strong>Quantity:</strong> 30 wire + 30 superslide + 50 shelf and rod</li>
+            <li><strong>Total units:</strong> 110</li>
+            <li><strong>Trips:</strong> 3</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- August 2025 -->
+    <section class="mb-16">
+      <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-purple-600 pb-3">
+        August 2025
+      </h2>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+        <div class="bg-white rounded-xl p-6 shadow-md order-card">
+          <h3 class="text-xl font-semibold text-purple-700 mb-3">Panther Builders</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Material:</strong> Superslide and wire</li>
+            <li><strong>Quantity:</strong> 50 superslide + 60 wire</li>
+            <li><strong>Total units:</strong> 110</li>
+            <li><strong>Trips:</strong> 2</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md order-card">
+          <h3 class="text-xl font-semibold text-purple-700 mb-3">Todd Wood Homes</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Material:</strong> Shelf and rod</li>
+            <li><strong>Quantity:</strong> 50 units</li>
+            <li><strong>Total units:</strong> 50</li>
+            <li><strong>Trips:</strong> 1</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md order-card">
+          <h3 class="text-xl font-semibold text-purple-700 mb-3">Dumont Construction</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Material:</strong> Wire and shelf and rod</li>
+            <li><strong>Quantity:</strong> 100 wire + 70 shelf and rod</li>
+            <li><strong>Total units:</strong> 170</li>
+            <li><strong>Trips:</strong> 4</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-gray-800 text-white py-6 text-center">
+    <p>Spaceoptions • Cedar Rapids, Iowa • Sample data from 2025</p>
+    <p class="text-sm mt-2 opacity-75">Created February 2026</p>
+  </footer>
+
+</body>
+</html>
