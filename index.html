@@ -6,15 +6,15 @@
     <title>Spaceoptions – Custom Storage Solutions | Cedar Rapids, IA</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            background-color: #f9f9f9;
+            background-color: #f4f7fa;
             color: #333;
         }
         h1, h2, h3 {
-            color: #333;
+            color: #2c3e50;
         }
         ul {
             list-style-type: disc;
@@ -22,13 +22,13 @@
         }
         a {
             text-decoration: none;
-            color: #0066cc;
+            color: #3498db;
         }
         a:hover {
             text-decoration: underline;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -39,67 +39,108 @@
             display: block;
             width: 100%;
             margin: 10px 0;
-            padding: 10px;
+            padding: 12px;
             box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #ddd;
         }
         button {
-            background-color: #0066cc;
+            background-color: #3498db;
             color: white;
             border: none;
             cursor: pointer;
+            font-weight: bold;
         }
         button:hover {
-            background-color: #0055aa;
+            background-color: #2980b9;
         }
         nav {
             margin: 20px 0;
-            padding: 10px;
-            background-color: #eee;
-            border-radius: 5px;
+            padding: 15px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         nav a {
-            margin-right: 15px;
+            margin-right: 20px;
+            font-weight: 600;
         }
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
         .product-card {
-            background-color: white;
-            border: 1px solid #ddd;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
-            padding: 15px;
+            padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
         }
         .product-card img {
             max-width: 100%;
             height: auto;
             border-radius: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         .product-card h3 {
-            font-size: 1.2em;
+            font-size: 1.3em;
             margin: 10px 0;
         }
         .product-card p {
             font-weight: bold;
-            color: #0066cc;
+            color: #27ae60;
         }
         .services-list {
             margin-top: 20px;
         }
-        /* Enhanced styles for dashboard */
+        /* Login screen */
+        #login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255,255,255,0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            max-width: 400px;
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        #guest-button {
+            background-color: #bdc3c7;
+            margin-top: 10px;
+        }
+        #guest-button:hover {
+            background-color: #95a5a6;
+        }
+        /* Dashboard styles */
         .dashboard-content {
             display: none;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .order-list {
             margin-top: 20px;
@@ -122,27 +163,29 @@
             text-align: left;
         }
         th {
-            background-color: #eee;
+            background-color: #ecf0f1;
         }
         .stock-info {
             font-size: 0.9em;
-            color: #666;
+            color: #7f8c8d;
         }
         .tab-container {
             display: flex;
             margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
         }
         .tab-button {
             flex: 1;
-            padding: 10px;
-            background-color: #eee;
+            padding: 12px;
+            background-color: #ecf0f1;
             border: none;
             cursor: pointer;
-            border-radius: 5px 5px 0 0;
+            font-weight: 600;
+            transition: background-color 0.2s;
         }
         .tab-button.active {
-            background-color: #fff;
-            border-bottom: 2px solid #0066cc;
+            background-color: white;
+            border-bottom: 3px solid #3498db;
         }
         .tab-content {
             display: none;
@@ -150,151 +193,201 @@
         .tab-content.active {
             display: block;
         }
-        /* Professional touches */
+        /* Professional header and footer */
         header {
-            background-color: #0066cc;
+            background-color: #3498db;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid #2980b9;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: white;
+        }
+        footer {
+            background-color: #2c3e50;
             color: white;
             padding: 20px;
             text-align: center;
+            margin-top: 50px;
         }
-        footer {
-            background-color: #eee;
-            padding: 10px;
+        /* Hero section */
+        .hero {
+            background-image: url('https://via.placeholder.com/1400x400?text=Custom+Storage+Solutions');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px;
             text-align: center;
-            margin-top: 40px;
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 50px;
+        }
+        .hero h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+        }
+        /* Totals due */
+        .totals-due {
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        /* Hide content initially */
+        #main-content {
+            display: none;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Spaceoptions – Custom Storage Solutions</h1>
-    <p>Cedar Rapids, Iowa • Quality Shelving & Organization</p>
-</header>
-
-<div class="container">
-
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#products">Products</a>
-        <a href="#quote">Get Quote</a>
-        <a href="#log">Order Log</a>
-        <a href="#dashboard">Dashboard</a>
-    </nav>
-
-    <div class="section" id="home">
+<div id="login-screen">
+    <div class="login-container">
         <h2>Welcome to Spaceoptions</h2>
-        <p>We design and install custom storage solutions tailored to your space and needs. Serving Cedar Rapids and Eastern Iowa since [year started].</p>
-
-        <h3>Why Choose Us?</h3>
-        <ul>
-            <li>Local expertise in Cedar Rapids</li>
-            <li>High-quality materials & craftsmanship</li>
-            <li>Transparent pricing & on-time delivery</li>
-            <li>View real 2025 order examples below</li>
-        </ul>
-
-        <h3>Our Location</h3>
-        <!-- Add location details here if available -->
-    </div>
-
-    <div class="section" id="products">
-        <h2>Our Products & Services</h2>
-        <p>We offer a variety of shelving options using high-quality ClosetMaid products. Prices are transparent and based on square footage.</p>
-        
-        <h3>Shelving Options</h3>
-        <div class="products-grid">
-            <div class="product-card">
-                <img src="https://www.organisemyhome.com/user/products/large/pic%201%20crop.jpg" alt="ClosetMaid SuperSlide Shelving">
-                <h3>SuperSlide Shelving</h3>
-                <p>$12.99 per sq ft</p>
-                <p>Ventilated wire shelving with integrated hang rod for smooth sliding of hangers.</p>
-            </div>
-            <div class="product-card">
-                <img src="https://m.media-amazon.com/images/I/61ytvS6rl-L.jpg" alt="ClosetMaid Wire Shelving">
-                <h3>Wire Shelving</h3>
-                <p>$7.99 per sq ft</p>
-                <p>Durable ventilated wire shelves ideal for closets, pantries, and garages.</p>
-            </div>
-            <div class="product-card">
-                <img src="https://m.media-amazon.com/images/I/61ISJRG8ZTL._AC_UF894,1000_QL80_.jpg" alt="ClosetMaid Shelf and Rod System">
-                <h3>Shelf and Rod System</h3>
-                <p>$11.99 per sq ft</p>
-                <p>Combined shelf and hanging rod for efficient closet organization.</p>
-            </div>
-            <div class="product-card">
-                <img src="https://closetmaidpro.com/wp-content/uploads/2025/01/Single-Family_8ft-Walk-In_Modern-Fronts_White-MID-Back.jpg" alt="ClosetMaid Laminate Shelving">
-                <h3>Laminate Shelving</h3>
-                <p>$12.99 per sq ft</p>
-                <p>Solid laminate surfaces for a premium look and added strength.</p>
-            </div>
-        </div>
-
-        <h3>Additional Services</h3>
-        <ul class="services-list">
-            <li>Drawer & Pull-Out Solutions</li>
-            <li>Garage Cabinets & Slatwall</li>
-            <li>Custom Closet Builds</li>
-            <li>Basement Organization</li>
-        </ul>
-    </div>
-
-    <div class="section" id="quote">
-        <h2>Request a Quote / Place Order</h2>
-        <p>Fill out the form below — we'll respond with a quote usually within 24-48 hours.</p>
-
-        <form id="quote-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message / Requirements:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
-            <button type="submit">Submit Request</button>
-        </form>
-
-        <p>Note: This is a quote request — no payment is processed here. We'll follow up with details & pricing.</p>
-    </div>
-
-    <div class="section" id="log">
-        <h2>Order Log 2025</h2>
-        <p><strong>January – Panther Builders</strong></p>
-        <p>Shelf and rod, 60 sq ft shelving + 30 units rod, Total: 90 units, 2 trips</p>
-        <hr>
-        <!-- Static public log; dynamic logs in dashboards -->
-    </div>
-
-    <div class="section" id="dashboard">
-        <h2>Dashboard Login</h2>
+        <p>Enter your 4-digit PIN to access your dashboard, or continue as guest for general information.</p>
         <form id="login-form">
-            <label for="pin">Enter 4-Digit PIN:</label>
-            <input type="password" id="pin" maxlength="4" required>
+            <input type="password" id="pin" maxlength="4" placeholder="Enter PIN" required>
             <button type="submit">Login</button>
         </form>
+        <button id="guest-button">Continue as Guest</button>
+    </div>
+</div>
 
-        <div id="manager-dashboard" class="dashboard-content">
-            <h3>Manager Dashboard</h3>
+<div id="main-content">
+
+    <header>
+        <h1>Spaceoptions – Custom Storage Solutions</h1>
+        <p>Cedar Rapids, Iowa • Quality Shelving & Organization Since [Year Started]</p>
+    </header>
+
+    <div class="container">
+
+        <nav id="public-nav">
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#quote">Get Quote</a>
+            <a href="#log">Order Log</a>
+        </nav>
+
+        <div class="hero" id="home">
+            <h2>Transform Your Space</h2>
+            <p>Custom storage solutions for closets, garages, and more. Proudly serving Cedar Rapids and Eastern Iowa.</p>
+        </div>
+
+        <div class="section" id="welcome">
+            <h2>Welcome to Spaceoptions</h2>
+            <p>We specialize in designing and installing high-quality, custom storage systems using premium ClosetMaid products. Our solutions are tailored to maximize your space efficiently and stylishly.</p>
+
+            <h3>Why Choose Spaceoptions?</h3>
+            <ul>
+                <li>Expert local team in Cedar Rapids</li>
+                <li>Premium materials for lasting durability</li>
+                <li>Competitive, transparent pricing</li>
+                <li>Fast, reliable installation</li>
+            </ul>
+
+            <h3>Our Location</h3>
+            <p>Cedar Rapids, IA – Contact us for directions or consultations.</p>
+        </div>
+
+        <div class="section" id="products">
+            <h2>Our Products & Services</h2>
+            <p>Explore our range of ClosetMaid shelving options. All prices are per square foot for easy estimation.</p>
+            
+            <h3>Shelving Options</h3>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://www.organisemyhome.com/user/products/large/pic%201%20crop.jpg" alt="ClosetMaid SuperSlide Shelving">
+                    <h3>SuperSlide Shelving</h3>
+                    <p>$12.99 / sq ft</p>
+                    <p>Seamless hanging with ventilated wire design for closets and pantries.</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/61ytvS6rl-L.jpg" alt="ClosetMaid Wire Shelving">
+                    <h3>Wire Shelving</h3>
+                    <p>$7.99 / sq ft</p>
+                    <p>Versatile and durable for any storage need.</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/61ISJRG8ZTL._AC_UF894,1000_QL80_.jpg" alt="ClosetMaid Shelf and Rod System">
+                    <h3>Shelf and Rod System</h3>
+                    <p>$11.99 / sq ft</p>
+                    <p>Integrated shelf and rod for optimal closet efficiency.</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://closetmaidpro.com/wp-content/uploads/2025/01/Single-Family_8ft-Walk-In_Modern-Fronts_White-MID-Back.jpg" alt="ClosetMaid Laminate Shelving">
+                    <h3>Laminate Shelving</h3>
+                    <p>$12.99 / sq ft</p>
+                    <p>Premium solid surfaces for a sleek, modern finish.</p>
+                </div>
+            </div>
+
+            <h3>Additional Services</h3>
+            <ul class="services-list">
+                <li>Custom Drawers & Pull-Outs</li>
+                <li>Garage Cabinetry & Wall Systems</li>
+                <li>Full Closet Renovations</li>
+                <li>Basement & Attic Organization</li>
+            </ul>
+        </div>
+
+        <div class="section" id="quote">
+            <h2>Request a Free Quote</h2>
+            <p>Let us help you organize your space. Submit your details below for a personalized quote.</p>
+
+            <form id="quote-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone">
+
+                <label for="message">Project Details:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Submit Request</button>
+            </form>
+
+            <p>We aim to respond within 24 hours. No payment required at this stage.</p>
+        </div>
+
+        <div class="section" id="log">
+            <h2>Public Order Log 2025</h2>
+            <p><strong>January – Panther Builders</strong></p>
+            <p>Shelf and rod system, 60 sq ft shelving + 30 units rod, Total: 90 units, 2 trips</p>
+            <hr>
+        </div>
+
+        <div id="manager-dashboard" class="dashboard-content section">
+            <h2>Manager Dashboard</h2>
             <button id="manager-logout">Logout</button>
             <div class="tab-container">
                 <button class="tab-button active" data-tab="inventory">Inventory</button>
-                <button class="tab-button" data-tab="orders">Orders</button>
+                <button class="tab-button" data-tab="orders">All Orders</button>
                 <button class="tab-button" data-tab="restock">Restock</button>
             </div>
             <div id="inventory-tab" class="tab-content active">
-                <h4>Current Inventory</h4>
+                <h3>Current Inventory Levels</h3>
                 <table id="inventory-table">
                     <tr><th>Product</th><th>Available (sq ft)</th></tr>
                 </table>
             </div>
             <div id="orders-tab" class="tab-content">
-                <h4>All Orders</h4>
+                <h3>All Builder Orders</h3>
                 <div id="manager-orders" class="order-list"></div>
             </div>
             <div id="restock-tab" class="tab-content">
-                <h4>Restock Inventory</h4>
+                <h3>Restock Inventory</h3>
                 <form id="restock-form">
                     <label for="superslide-restock">SuperSlide (add sq ft):</label>
                     <input type="number" id="superslide-restock" min="0" value="0">
@@ -308,25 +401,26 @@
                     <label for="laminate-restock">Laminate (add sq ft):</label>
                     <input type="number" id="laminate-restock" min="0" value="0">
 
-                    <button type="submit">Update Inventory</button>
+                    <button type="submit">Update Stock</button>
                 </form>
             </div>
         </div>
 
-        <div id="builder-dashboard" class="dashboard-content">
-            <h3 id="builder-title">Builder Dashboard</h3>
+        <div id="builder-dashboard" class="dashboard-content section">
+            <h2 id="builder-title">Builder Dashboard</h2>
             <button id="builder-logout">Logout</button>
+            <div class="totals-due" id="totals-due">Totals Due: $0.00</div>
             <div class="tab-container">
                 <button class="tab-button active" data-tab="materials">Materials</button>
                 <button class="tab-button" data-tab="order">Place Order</button>
                 <button class="tab-button" data-tab="past-orders">Past Orders</button>
             </div>
             <div id="materials-tab" class="tab-content active">
-                <h4>Materials Options</h4>
+                <h3>Available Materials</h3>
                 <div id="builder-products" class="products-grid"></div>
             </div>
             <div id="order-tab" class="tab-content">
-                <h4>Place Order</h4>
+                <h3>Place New Order</h3>
                 <form id="order-form">
                     <label for="superslide-qty">SuperSlide (sq ft): <span id="superslide-stock" class="stock-info"></span></label>
                     <input type="number" id="superslide-qty" min="0" value="0">
@@ -340,26 +434,27 @@
                     <label for="laminate-qty">Laminate (sq ft): <span id="laminate-stock" class="stock-info"></span></label>
                     <input type="number" id="laminate-qty" min="0" value="0">
 
-                    <label for="order-comments">Comments:</label>
+                    <label for="order-comments">Additional Comments:</label>
                     <textarea id="order-comments" rows="3"></textarea>
 
-                    <p>Total Price: <span id="total-price">$0.00</span></p>
+                    <p>Total Estimated Price: <span id="total-price">$0.00</span></p>
 
                     <button type="submit">Submit Order</button>
                 </form>
             </div>
             <div id="past-orders-tab" class="tab-content">
-                <h4>Past Orders</h4>
+                <h3>Your Past Orders</h3>
                 <div id="builder-orders" class="order-list"></div>
             </div>
         </div>
+
     </div>
 
-</div>
+    <footer>
+        <p>&copy; 2026 Spaceoptions | Cedar Rapids, IA | Email: info@spaceoptions.com | Phone: (319) 555-1234</p>
+    </footer>
 
-<footer>
-    <p>&copy; 2026 Spaceoptions | Cedar Rapids, IA | Contact: [email/phone]</p>
-</footer>
+</div>
 
 <script>
     // Prices
@@ -378,19 +473,20 @@
     };
 
     let currentUser = null;
+    let currentView = 'public'; // Default to public
 
     // Initialize storage
     if (!localStorage.getItem('orders')) {
-        const initialOrders = [
+        localStorage.setItem('orders', JSON.stringify([
             {
                 builder: 'panther',
                 date: '2025-01-01',
                 details: 'Shelf and rod: 60 sq ft',
                 comments: 'Total: 90 units, 2 trips (including 30 units rod)',
-                price: 719.40
+                price: 719.40,
+                paid: false
             }
-        ];
-        localStorage.setItem('orders', JSON.stringify(initialOrders));
+        ]));
     }
 
     if (!localStorage.getItem('inventory')) {
@@ -402,24 +498,248 @@
         }));
     }
 
-    // Quote form (unchanged)
+    // Quote form
     document.getElementById('quote-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        alert('Form submitted! We will get back to you within 24-48 hours.');
+        alert('Quote request submitted! Our team will contact you soon.');
     });
 
-    // Login
+    // Login form
     document.getElementById('login-form').addEventListener('submit', function(e) {
         e.preventDefault();
         const pin = document.getElementById('pin').value;
+        login(pin);
+    });
+
+    // Guest button
+    document.getElementById('guest-button').addEventListener('click', function() {
+        login(null); // Guest login
+    });
+
+    function login(pin) {
+        document.getElementById('public-nav').style.display = 'none';
+        document.getElementById('welcome').style.display = 'none';
+        document.getElementById('products').style.display = 'none';
+        document.getElementById('quote').style.display = 'none';
+        document.getElementById('log').style.display = 'none';
         document.getElementById('manager-dashboard').style.display = 'none';
         document.getElementById('builder-dashboard').style.display = 'none';
-        document.getElementById('login-form').style.display = 'block';
 
         if (pin === '1234') {
             currentUser = 'manager';
+            currentView = 'manager';
             document.getElementById('manager-dashboard').style.display = 'block';
-            document.getElementById('login-form').style.display = 'none';
             displayInventory();
             displayManagerOrders();
-            setup
+            setupTabListeners('manager-dashboard');
+        } else if (builders[pin]) {
+            currentUser = builders[pin].key;
+            currentView = 'builder';
+            document.getElementById('builder-title').textContent = `${builders[pin].name} Dashboard`;
+            document.getElementById('builder-dashboard').style.display = 'block';
+            if (!document.getElementById('builder-products').innerHTML) {
+                document.getElementById('builder-products').innerHTML = document.querySelector('#products .products-grid').innerHTML;
+            }
+            updateStockInfo();
+            displayBuilderOrders(currentUser);
+            calculateTotalsDue(currentUser);
+            setupTabListeners('builder-dashboard');
+            setupOrderCalculation();
+        } else if (pin === null) {
+            currentView = 'public';
+            document.getElementById('public-nav').style.display = 'block';
+            document.getElementById('welcome').style.display = 'block';
+            document.getElementById('products').style.display = 'block';
+            document.getElementById('quote').style.display = 'block';
+            document.getElementById('log').style.display = 'block';
+        } else {
+            alert('Invalid PIN. Please try again or continue as guest.');
+            return;
+        }
+
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+        document.getElementById('pin').value = '';
+    }
+
+    // Logout buttons
+    document.getElementById('manager-logout').addEventListener('click', logout);
+    document.getElementById('builder-logout').addEventListener('click', logout);
+
+    function logout() {
+        document.getElementById('login-screen').style.display = 'flex';
+        document.getElementById('main-content').style.display = 'none';
+        currentUser = null;
+        currentView = 'public';
+    }
+
+    // Tab setup
+    function setupTabListeners(dashboardId) {
+        const tabs = document.querySelectorAll(`#${dashboardId} .tab-button`);
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                const tabContents = document.querySelectorAll(`#${dashboardId} .tab-content`);
+                tabContents.forEach(c => c.classList.remove('active'));
+                document.getElementById(`${this.dataset.tab}-tab`).classList.add('active');
+            });
+        });
+    }
+
+    // Display inventory
+    function displayInventory() {
+        const inventory = JSON.parse(localStorage.getItem('inventory'));
+        const table = document.getElementById('inventory-table');
+        table.innerHTML = '<tr><th>Product</th><th>Available (sq ft)</th></tr>';
+        for (const [key, value] of Object.entries(inventory)) {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}</td><td>${value}</td>`;
+            table.appendChild(row);
+        }
+    }
+
+    // Update stock info
+    function updateStockInfo() {
+        const inventory = JSON.parse(localStorage.getItem('inventory'));
+        document.getElementById('superslide-stock').textContent = `(Stock: ${inventory.superslide} sq ft)`;
+        document.getElementById('wire-stock').textContent = `(Stock: ${inventory.wire} sq ft)`;
+        document.getElementById('shelfrod-stock').textContent = `(Stock: ${inventory.shelfrod} sq ft)`;
+        document.getElementById('laminate-stock').textContent = `(Stock: ${inventory.laminate} sq ft)`;
+    }
+
+    // Display manager orders
+    function displayManagerOrders() {
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        const container = document.getElementById('manager-orders');
+        container.innerHTML = '';
+        orders.forEach(order => {
+            const item = document.createElement('div');
+            item.className = 'order-item';
+            item.innerHTML = `<strong>${order.builder.toUpperCase()} - ${order.date}</strong><p>Details: ${order.details}</p><p>Comments: ${order.comments}</p><p>Price: $${order.price.toFixed(2)} (Paid: ${order.paid ? 'Yes' : 'No'})</p>`;
+            container.appendChild(item);
+        });
+    }
+
+    // Display builder orders
+    function displayBuilderOrders(builderKey) {
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        const container = document.getElementById('builder-orders');
+        container.innerHTML = '';
+        orders.filter(order => order.builder === builderKey).forEach(order => {
+            const item = document.createElement('div');
+            item.className = 'order-item';
+            item.innerHTML = `<strong>${order.date}</strong><p>Details: ${order.details}</p><p>Comments: ${order.comments}</p><p>Price: $${order.price.toFixed(2)} (Paid: ${order.paid ? 'Yes' : 'No'})</p>`;
+            container.appendChild(item);
+        });
+    }
+
+    // Calculate totals due
+    function calculateTotalsDue(builderKey) {
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        const unpaid = orders.filter(order => order.builder === builderKey && !order.paid).reduce((sum, order) => sum + order.price, 0);
+        document.getElementById('totals-due').textContent = `Totals Due: $${unpaid.toFixed(2)}`;
+    }
+
+    // Order calculation
+    function setupOrderCalculation() {
+        const qtyInputs = document.querySelectorAll('#order-form input[type="number"]');
+        qtyInputs.forEach(input => {
+            input.addEventListener('input', calculateTotal);
+        });
+    }
+
+    function calculateTotal() {
+        const superslideQty = parseFloat(document.getElementById('superslide-qty').value) || 0;
+        const wireQty = parseFloat(document.getElementById('wire-qty').value) || 0;
+        const shelfrodQty = parseFloat(document.getElementById('shelfrod-qty').value) || 0;
+        const laminateQty = parseFloat(document.getElementById('laminate-qty').value) || 0;
+
+        const total = (superslideQty * prices.superslide) + (wireQty * prices.wire) + (shelfrodQty * prices.shelfrod) + (laminateQty * prices.laminate);
+        document.getElementById('total-price').textContent = `$${total.toFixed(2)}`;
+    }
+
+    // Submit order
+    document.getElementById('order-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const superslideQty = parseFloat(document.getElementById('superslide-qty').value) || 0;
+        const wireQty = parseFloat(document.getElementById('wire-qty').value) || 0;
+        const shelfrodQty = parseFloat(document.getElementById('shelfrod-qty').value) || 0;
+        const laminateQty = parseFloat(document.getElementById('laminate-qty').value) || 0;
+        const comments = document.getElementById('order-comments').value;
+
+        if (superslideQty + wireQty + shelfrodQty + laminateQty === 0) {
+            alert('Please specify quantities for at least one item.');
+            return;
+        }
+
+        const inventory = JSON.parse(localStorage.getItem('inventory'));
+        if (superslideQty > inventory.superslide || wireQty > inventory.wire || shelfrodQty > inventory.shelfrod || laminateQty > inventory.laminate) {
+            alert('Not enough stock available for one or more items. Please check inventory.');
+            return;
+        }
+
+        inventory.superslide -= superslideQty;
+        inventory.wire -= wireQty;
+        inventory.shelfrod -= shelfrodQty;
+        inventory.laminate -= laminateQty;
+        localStorage.setItem('inventory', JSON.stringify(inventory));
+
+        let details = [];
+        if (superslideQty > 0) details.push(`SuperSlide: ${superslideQty} sq ft`);
+        if (wireQty > 0) details.push(`Wire: ${wireQty} sq ft`);
+        if (shelfrodQty > 0) details.push(`Shelf and Rod: ${shelfrodQty} sq ft`);
+        if (laminateQty > 0) details.push(`Laminate: ${laminateQty} sq ft`);
+        const detailsStr = details.join(', ');
+
+        const price = (superslideQty * prices.superslide) + (wireQty * prices.wire) + (shelfrodQty * prices.shelfrod) + (laminateQty * prices.laminate);
+
+        const newOrder = {
+            builder: currentUser,
+            date: new Date().toISOString().split('T')[0],
+            details: detailsStr,
+            comments: comments,
+            price: price,
+            paid: false
+        };
+
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        orders.push(newOrder);
+        localStorage.setItem('orders', JSON.stringify(orders));
+
+        alert('Order placed successfully! Inventory updated.');
+        document.getElementById('order-form').reset();
+        calculateTotal();
+        updateStockInfo();
+        displayBuilderOrders(currentUser);
+        calculateTotalsDue(currentUser);
+    });
+
+    // Restock form
+    document.getElementById('restock-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const superslideAdd = parseFloat(document.getElementById('superslide-restock').value) || 0;
+        const wireAdd = parseFloat(document.getElementById('wire-restock').value) || 0;
+        const shelfrodAdd = parseFloat(document.getElementById('shelfrod-restock').value) || 0;
+        const laminateAdd = parseFloat(document.getElementById('laminate-restock').value) || 0;
+
+        if (superslideAdd + wireAdd + shelfrodAdd + laminateAdd === 0) {
+            alert('Please enter amounts to restock at least one product.');
+            return;
+        }
+
+        const inventory = JSON.parse(localStorage.getItem('inventory'));
+        inventory.superslide += superslideAdd;
+        inventory.wire += wireAdd;
+        inventory.shelfrod += shelfrodAdd;
+        inventory.laminate += laminateAdd;
+        localStorage.setItem('inventory', JSON.stringify(inventory));
+
+        alert('Inventory restocked successfully!');
+        document.getElementById('restock-form').reset();
+        displayInventory();
+    });
+</script>
+
+</body>
+</html>
