@@ -1,0 +1,23 @@
+name: Update Google Sheet
+
+on:
+  push:
+    branches: [ main ]  # Runs on pushes to main; change as needed
+
+jobs:
+  update-sheet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate and Update Sheet
+        uses: ericoporto/gsheet-action@v1  # Or search Marketplace for "gsheet" actions
+        with:
+          spreadsheet_id: YOUR_SHEET_ID_HERE  # Get from Sheet URL: docs.google.com/spreadsheets/d/[THIS_PART]/edit
+          sheet_name: Sheet1  # Or your tab name
+          # Use full JSON if the action supports it
+          credentials_json: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
+          # Example: Append a row (adapt values)
+          values: |
+            ["New Push", "${{ github.sha }}", "${{ github.actor }}", "Success"]
