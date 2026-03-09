@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -65,8 +65,8 @@
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-
       const fd = new FormData(form);
+
       const items = [
         { item: "Wood Shelves", quantity: Number(fd.get("wood_shelves") || 0) },
         { item: "Metal Shelves", quantity: Number(fd.get("metal_shelves") || 0) },
