@@ -26,6 +26,7 @@
 
     <h2>Inventory In/Out</h2>
     <p class="text-muted">Use this to add stock in or remove stock out.</p>
+
     <form id="adjustForm" class="row g-3">
       <div class="col-md-4">
         <label for="item" class="form-label">Item</label>
@@ -66,10 +67,10 @@
 
     function drawInventory(items) {
       tableBody.innerHTML = "";
-      items.forEach((product) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `<td>${product.item}</td><td>${product.stock}</td>`;
-        tableBody.appendChild(row);
+      items.forEach((row) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${row.item}</td><td>${row.stock}</td>`;
+        tableBody.appendChild(tr);
       });
     }
 
@@ -84,8 +85,8 @@
 
     adjustForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-
       const fd = new FormData(adjustForm);
+
       const payload = {
         item: fd.get("item"),
         quantity: Number(fd.get("quantity")),
