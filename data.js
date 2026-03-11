@@ -1,21 +1,66 @@
-const products = [
-    { name: 'Shelf', stock: 200 },
-    { name: 'Rod', stock: 150 },
-    { name: 'Wire', stock: 300 },
-    { name: 'Superslide', stock: 100 }
-];
+(function () {
+  const configured = window.BOT_WEB_APP_URL;
+  if (configured && typeof configured === 'string' && configured.trim()) {
+    window.botWebAppUrl = configured.trim();
+    return;
+  }
+  window.botWebAppUrl = 'https://script.google.com/macros/s/AKfycbw414XwgwL-djigV3FLqodp8JxlU5seL4mjNXFJhLOu2gtBi2vFdHJeDE0joNlk82Q8/exec';
+})();
 
-const orderHistory = [
-    { builder: 'Panther Builders', date: '2025-01-01', items: { 'Shelf': 60, 'Rod': 30 } },
-    { builder: 'Dumont Construction', date: '2025-01-01', items: { 'Wire': 45, 'Shelf': 20, 'Rod': 20 } },
-    { builder: 'Wood Homes', date: '2025-01-01', items: { 'Wire': 120 } },
-    { builder: 'Todd Wood Homes', date: '2025-03-01', items: { 'Wire': 100, 'Shelf': 35, 'Rod': 35 } },
-    { builder: 'Dumont Construction', date: '2025-03-01', items: { 'Wire': 50 } },
-    { builder: 'Panther Builders', date: '2025-03-01', items: { 'Shelf': 150 } },
-    { builder: 'Dumont Construction', date: '2025-07-01', items: { 'Shelf': 40, 'Rod': 40, 'Wire': 30 } },
-    { builder: 'Todd Wood Homes', date: '2025-07-01', items: { 'Superslide': 20 } },
-    { builder: 'Panther Builders', date: '2025-07-01', items: { 'Wire': 30, 'Superslide': 30, 'Shelf': 50, 'Rod': 50 } },
-    { builder: 'Panther Builders', date: '2025-08-01', items: { 'Superslide': 50, 'Wire': 60 } },
-    { builder: 'Todd Wood Homes', date: '2025-08-01', items: { 'Shelf': 50, 'Rod': 50 } },
-    { builder: 'Dumont Construction', date: '2025-08-01', items: { 'Wire': 100, 'Shelf': 70, 'Rod': 70 } }
-];
+function isAppsScriptUrl(url) {
+  if (!url) return false;
+  return /script\.google\.com/.test(url) || /\/exec$/.test(url) || /\/dev$/.test(url);
+}
+
+function normalizeBaseUrl(url) {
+  return String(url || '').replace(/\/+$/, '');
+}
+
+async function requestJson(url, options) {
+  const response = await fetch(url, {
+    headers: { 'Content-Type': 'application/json' },
+    ...options
+  });
+
+  const json = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(json.error || 'Request failed');
+  }
+  return json;
+}
+
+async function fetchInventory() {
+  const baseUrl = normalizeBaseUrl(window.botWebAppUrl);
+  if (isAppsScriptUrl(baseUrl)) {
+    return requestJson(`${baseUrl}?action=inventory`);
+  }
+  return requestJson(`${baseUrl}/inventory`);
+}
+
+async function adjustInventory(payload) {
+  const baseUrl = normalizeBaseUrl(window.botWebAppUrl);
+  if (isAppsScriptUrl(baseUrl)) {
+    return requestJson(baseUrl, {
+      method: 'POST',
+      body: JSON.stringify({ action: 'adjust', ...payload })
+    });
+  }
+  return requestJson(`${baseUrl}/inventory/adjust`, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  });
+}
+
+async function submitOrder(payload) {
+  const baseUrl = normalizeBaseUrl(window.botWebAppUrl);
+  if (isAppsScriptUrl(baseUrl)) {
+    return requestJson(baseUrl, {
+      method: 'POST',
+      body: JSON.stringify({ action: 'order', ...payload })
+    });
+  }
+  return requestJson(`${baseUrl}/orders`, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  });
+}
