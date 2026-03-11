@@ -3,51 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Order - SpaceOptions</title>
+    <title>Current Inventory - SpaceOptions</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container mt-5">
-        <h1>Submit Your Order</h1>
-        <p>Orders are stored in Google Sheets and inventory is reduced automatically.</p>
-        <form id="orderForm">
-            <div class="mb-3">
-                <label for="builder" class="form-label">Builder Name</label>
-                <select id="builder" name="builder" class="form-select" required>
-                    <option value="">Select...</option>
-                    <option>ABC Construction</option>
-                    <option>XYZ Builders</option>
-                    <option>DEF Homes</option>
-                    <!-- Add more builders from your list -->
+        <h1>Current Inventory</h1>
+        <p class="text-muted">Live inventory from Google Sheets.</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Current Stock</th>
+                </tr>
+            </thead>
+            <tbody id="inventoryTable"></tbody>
+        </table>
+
+        <hr class="my-4">
+
+        <h2>Inventory In/Out</h2>
+        <p class="text-muted">Use this to add stock in or remove stock out.</p>
+        <form id="adjustForm" class="row g-3">
+            <div class="col-md-4">
+                <label for="item" class="form-label">Item</label>
+                <input id="item" name="item" class="form-control" required placeholder="Shelf">
+            </div>
+            <div class="col-md-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" id="quantity" name="quantity" class="form-control" min="1" required>
+            </div>
+            <div class="col-md-2">
+                <label for="direction" class="form-label">Direction</label>
+                <select id="direction" name="direction" class="form-select" required>
+                    <option value="in">IN</option>
+                    <option value="out">OUT</option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label for="wood_shelves" class="form-label">Wood Shelves (qty)</label>
-                <input type="number" id="wood_shelves" name="wood_shelves" class="form-control" min="0">
+            <div class="col-md-3">
+                <label for="notes" class="form-label">Notes</label>
+                <input id="notes" name="notes" class="form-control" placeholder="Received shipment">
             </div>
-            <div class="mb-3">
-                <label for="metal_shelves" class="form-label">Metal Shelves (qty)</label>
-                <input type="number" id="metal_shelves" name="metal_shelves" class="form-control" min="0">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Submit Adjustment</button>
             </div>
-            <div class="mb-3">
-                <label for="hanging_rods" class="form-label">Hanging Rods (qty)</label>
-                <input type="number" id="hanging_rods" name="hanging_rods" class="form-control" min="0">
-            </div>
-            <div class="mb-3">
-                <label for="brackets" class="form-label">Brackets (qty)</label>
-                <input type="number" id="brackets" name="brackets" class="form-control" min="0">
-            </div>
-            <div class="mb-3">
-                <label for="screw_packs" class="form-label">Screw Packs (qty)</label>
-                <input type="number" id="screw_packs" name="screw_packs" class="form-control" min="0">
-            </div>
-            <div class="mb-3">
-                <label for="notes" class="form-label">Additional Notes</label>
-                <textarea id="notes" name="notes" class="form-control"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit Order</button>
         </form>
+
         <div id="status" class="mt-3"></div>
     </div>
 
@@ -56,39 +58,56 @@
     </script>
     <script src="public/js/bot-client.js?v=20260311"></script>
     <script>
-        const form = document.getElementById('orderForm');
+        const tableBody = document.getElementById('inventoryTable');
         const status = document.getElementById('status');
+        const adjustForm = document.getElementById('adjustForm');
 
         function setStatus(message, type = 'info') {
             status.innerHTML = `<div class="alert alert-${type}" role="alert">${message}</div>`;
         }
 
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const fd = new FormData(form);
-            const items = [
-                { item: 'Wood Shelves', quantity: Number(fd.get('wood_shelves') || 0) },
-                { item: 'Metal Shelves', quantity: Number(fd.get('metal_shelves') || 0) },
-                { item: 'Hanging Rods', quantity: Number(fd.get('hanging_rods') || 0) },
-                { item: 'Brackets', quantity: Number(fd.get('brackets') || 0) },
-                { item: 'Screw Packs', quantity: Number(fd.get('screw_packs') || 0) }
-            ].filter((item) => item.quantity > 0);
+        function drawInventory(items) {
+            tableBody.innerHTML = '';
+            items.forEach(product => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${product.item}</td><td>${product.stock}</td>`;
+                tableBody.appendChild(row);
+            });
+        }
 
+        async function loadInventory() {
+            try {
+                const data = await fetchInventory();
+                drawInventory(data.inventory || []);
+            } catch (error) {
+                setStatus(`Could not load inventory: ${error.message}`, 'danger');
+            }
+        }
+
+        adjustForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(adjustForm);
             const payload = {
-                builder: fd.get('builder'),
-                notes: fd.get('notes'),
-                items
+                item: formData.get('item'),
+                quantity: Number(formData.get('quantity')),
+                direction: formData.get('direction'),
+                notes: formData.get('notes'),
+                source: 'manual'
             };
 
             try {
-                const response = await submitOrder(payload);
-                form.reset();
-                setStatus(`Order submitted. Order ID: ${response.orderId}`, 'success');
+                const data = await adjustInventory(payload);
+                drawInventory(data.inventory || []);
+                adjustForm.reset();
+                setStatus('Inventory updated.', 'success');
             } catch (error) {
-                setStatus(`Order failed: ${error.message}`, 'danger');
+                setStatus(`Update failed: ${error.message}`, 'danger');
             }
         });
+
+        loadInventory();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+    
