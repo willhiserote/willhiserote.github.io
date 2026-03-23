@@ -1,0 +1,28 @@
+name: Log Site Updates to Sheet (Optional Push Logging)
+
+on:
+  push:
+    branches:
+      - main  # or master, whichever your default branch is
+
+jobs:
+  log-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log commit details
+        run: |
+          echo "New push detected!"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Commit message: ${{ github.event.head_commit.message }}"
+          echo "Pusher: ${{ github.actor }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Repository: ${{ github.repository }}"
+          date
+
+      # Optional: If you later want to actually update your Google Sheet from here,
+      # we can add Google API steps using a service account secret.
+      # For now this just logs to the Actions console (visible in your repo's Actions tab).
+      
