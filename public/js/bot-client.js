@@ -4,7 +4,7 @@
     window.botWebAppUrl = configured.trim();
     return;
   }
-  window.botWebAppUrl = 'https://script.google.com/macros/s/AKfycbwmRoiJKTz8Musq8xheGUhxFW-p5Ft54KWvgxaPHp5KQVSBSFcRqyVt_RIJx0DgfNay2Q/exec;
+  window.botWebAppUrl = 'https://script.google.com/macros/s/AKfycbxdEtFLVYw_2yUtUiGIrt1dMyXme5ZhvKZJZO-80sV7dJEnDZDTutoKA1QMGuPmZve8/exec
 })();
 
 async function botRequest(options) {
